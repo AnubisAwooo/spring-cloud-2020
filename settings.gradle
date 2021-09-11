@@ -15,3 +15,5 @@ include ':cloud-consumer-order-zookeeper-80'
 
 include ':cloud-provider-payment8006'
 include ':cloud-consumer-order-consul-80'
+
+include ':cloud-consumer-order-feign-80'

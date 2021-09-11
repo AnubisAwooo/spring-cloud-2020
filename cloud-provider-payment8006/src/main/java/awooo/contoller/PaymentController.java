@@ -63,4 +63,14 @@ public class PaymentController {
         return allKnownRegions;
     }
 
+    @GetMapping("/feign/timeout")
+    public Message<?> timeout() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return new Message<>(0, "success port: " + serverPort, null);
+    }
+
 }
