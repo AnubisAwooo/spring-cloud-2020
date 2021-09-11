@@ -6,3 +6,4 @@ include ':cloud-provider-payment8001'
 
 include ':cloud-consumer-order80'
 
+include ':cloud-eureka-server7001'
