@@ -25,7 +25,7 @@ public class OrderController {
 
     @GetMapping("/payment/get/{id}")
     public Message<?> getPayment(@PathVariable("id") Long id) {
-        paymentFeignService.timeout();
+//        paymentFeignService.timeout();
         return paymentFeignService.get(id);
     }
 

@@ -14,3 +14,6 @@ feign:
       default:
         ConnectTimeOut: 2000
         ReadTimeOut: 2000
+logging:
+  level:
+    awooo.service.PaymentFeignService: debug
