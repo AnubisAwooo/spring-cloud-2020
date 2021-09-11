@@ -1,5 +1,7 @@
 rootProject.name = 'spring-cloud-2020'
 
+include ':cloud-api-common'
+
 include ':cloud-provider-payment8001'
 
 include ':cloud-consumer-order80'
