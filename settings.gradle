@@ -11,5 +11,7 @@ include ':cloud-eureka-server7002'
 include ':cloud-eureka-server7003'
 
 include ':cloud-provider-payment8004'
-include ':cloud-consumer-zookeeper-order80'
+include ':cloud-consumer-order-zookeeper-80'
 
+include ':cloud-provider-payment8006'
+include ':cloud-consumer-order-consul-80'

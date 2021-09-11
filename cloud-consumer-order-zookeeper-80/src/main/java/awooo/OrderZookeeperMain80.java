@@ -6,10 +6,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @EnableDiscoveryClient
 @SpringBootApplication
-public class ZookeeperOrderMain80 {
+public class OrderZookeeperMain80 {
 
     public static void main(String[] args) {
-        SpringApplication.run(ZookeeperOrderMain80.class, args);
+        SpringApplication.run(OrderZookeeperMain80.class, args);
     }
 
 }
