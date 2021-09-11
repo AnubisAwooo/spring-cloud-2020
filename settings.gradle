@@ -19,3 +19,4 @@ include ':cloud-consumer-order-consul-80'
 include ':cloud-consumer-order-feign-80'
 
 include ':cloud-provider-payment-hystrix-8008'
+include ':cloud-consumer-order-feign-hystrix-80'
