@@ -29,6 +29,7 @@ test {
 
 subprojects {
     apply plugin: 'java'
+    apply plugin: 'idea'
     apply plugin: 'io.spring.dependency-management'
 
     configurations {
@@ -49,6 +50,12 @@ subprojects {
     sourceCompatibility = '11'
     targetCompatibility = '11'
     [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+
+    dependencyManagement {
+        imports {
+            mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+        }
+    }
 
     dependencies {
 
