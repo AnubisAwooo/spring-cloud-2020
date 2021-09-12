@@ -1,0 +1,13 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: cloud-consumer-hystrix-dashboard
+  cloud:
+    consul:
+      discovery:
+        service-name: ${spring.application.name}
+hystrix:
+  dashboard:
+    proxy-stream-allow-list: localhost
