@@ -8,12 +8,13 @@ spring:
     consul:
       discovery:
         service-name: ${spring.application.name}
+
 feign:
-  hystrix:
+  circuitbreaker:
     enabled: true
-#feign:
+
 #  client:
 #    config:
 #      default:
-#        ConnectTimeOut: 2000
-#        ReadTimeOut: 2000
+#        connectTimeOut: 2000
+#        readTimeOut: 2000

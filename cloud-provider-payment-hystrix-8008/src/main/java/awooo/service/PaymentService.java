@@ -1,7 +1,5 @@
 package awooo.service;
 
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +11,9 @@ public class PaymentService {
         return "线程池: " + Thread.currentThread().getName() + " " + id + " O(∩_∩)O哈哈~";
     }
 
-    @HystrixCommand(fallbackMethod = "paymentInfoTimeoutHandle", commandProperties = {
-            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "3000")
-    })
+//    @HystrixCommand(fallbackMethod = "paymentInfoTimeoutHandle", commandProperties = {
+//            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "3000")
+//    })
     public String paymentInfoTimeout(Long id) {
         long start = System.currentTimeMillis();
         long timeout = 5000;
