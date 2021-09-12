@@ -29,7 +29,9 @@ public class PaymentController {
 
     @GetMapping("/hystrix/timeout/{id}")
     public Message<?> payTimeout(@PathVariable("id") Long id) {
+//        log.info("payTimeout in -> " + Thread.currentThread().getName());
         String result = paymentService.paymentInfoTimeout(id);
+//        log.info("payTimeout end -> " + Thread.currentThread().getName());
         return new Message<>(0, "success port: " + serverPort, result);
     }
 

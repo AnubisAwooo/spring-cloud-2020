@@ -2,6 +2,9 @@ package awooo.contoller;
 
 import awooo.entities.Message;
 import awooo.service.PaymentFeignService;
+import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,6 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@DefaultProperties(defaultFallback = "payTimeoutHandleGlobal", commandProperties = {
+        @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000")
+})
 @Slf4j
 @RestController
 @RequestMapping("/consumer")
@@ -31,8 +37,21 @@ public class OrderController {
     }
 
     @GetMapping("/hystrix/timeout/{id}")
+    @HystrixCommand(fallbackMethod = "payTimeoutHandle", commandProperties = {
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1500")
+    })
     public Message<?> payTimeout(@PathVariable("id") Long id) {
         String result = paymentFeignService.payTimeout(id).getData();
+        return new Message<>(0, "success port: " + serverPort, result);
+    }
+
+    public Message<?> payTimeoutHandle(Long id) {
+        String result = "80 超时 " + id;
+        return new Message<>(0, "success port: " + serverPort, result);
+    }
+
+    public Message<?> payTimeoutHandleGlobal(Long id) {
+        String result = "80 全局超时 " + id;
         return new Message<>(0, "success port: " + serverPort, result);
     }
 

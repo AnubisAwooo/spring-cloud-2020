@@ -8,6 +8,9 @@ spring:
     consul:
       discovery:
         service-name: ${spring.application.name}
+feign:
+  hystrix:
+    enabled: true
 #feign:
 #  client:
 #    config:
