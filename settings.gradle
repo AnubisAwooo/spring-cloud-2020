@@ -24,3 +24,9 @@ include ':cloud-consumer-order-feign-hystrix-80'
 include ':cloud-consumer-hystrix-dashboard-9001'
 
 include ':cloud-gateway-gateway-9527'
+
+// config 和 bus 没做
+
+include ':cloud-stream-rabbitmq-provider-8801'
+include ':cloud-stream-rabbitmq-consumer-8802'
+

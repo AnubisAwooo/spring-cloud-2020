@@ -1,0 +1,11 @@
+server:
+  port: 8802
+
+spring:
+  application:
+    name: cloud-stream-rabbitmq-consumer
+  cloud:
+    consul:
+      discovery:
+        service-name: ${spring.application.name}
+
