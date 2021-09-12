@@ -35,4 +35,10 @@ public class PaymentController {
         return new Message<>(0, "success port: " + serverPort, result);
     }
 
+    @GetMapping("/hystrix/circuitBreaker/{id}")
+    public Message<?> payCircuitBreaker(@PathVariable("id") Long id) {
+        String result = paymentService.payCircuitBreaker(id);
+        return new Message<>(0, "success", result);
+    }
+
 }

@@ -2,7 +2,9 @@ package awooo.contoller;
 
 import awooo.entities.Message;
 import awooo.service.PaymentFeignService;
+import cn.hutool.core.util.IdUtil;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -51,5 +53,7 @@ public class OrderController {
         String result = "80 全局超时 ";
         return new Message<>(0, "success port: " + serverPort, result);
     }
+
+
 
 }

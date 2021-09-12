@@ -1,5 +1,8 @@
 package awooo.service;
 
+import cn.hutool.core.util.IdUtil;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -30,4 +33,23 @@ public class PaymentService {
         return "线程池: " + Thread.currentThread().getName() + " " + id + " o(╥﹏╥)o";
     }
 
+
+    @HystrixCommand(fallbackMethod = "payCircuitBreakerFallback", commandProperties = {
+            @HystrixProperty(name = "circuitBreaker.enabled", value = "true"),
+            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),
+            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "10000"),
+            @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "60")
+    })
+    public String payCircuitBreaker(Long id) {
+        if (id < 0) {
+            throw new RuntimeException("id can not be negative");
+        }
+        String serialNumber = IdUtil.simpleUUID();
+
+        return Thread.currentThread().getName() + " success: " + serialNumber;
+    }
+
+    public String payCircuitBreakerFallback(Long id) {
+        return Thread.currentThread().getName() + " to busy: " + id;
+    }
 }
