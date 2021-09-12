@@ -8,4 +8,21 @@ spring:
     consul:
       discovery:
         service-name: ${spring.application.name}
-
+    stream:
+      binders:
+        defaultRabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: admin
+                password: '123456'
+                virtual-host: /
+      bindings:
+        input:
+          destination: studyExchange
+          content-type: application/json
+          default-binder: defaultRabbit
+          group: consumer

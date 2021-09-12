@@ -25,3 +25,4 @@ spring:
           destination: studyExchange
           content-type: application/json
           default-binder: defaultRabbit
+          group: provider
