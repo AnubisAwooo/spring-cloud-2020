@@ -1,0 +1,5 @@
+rootProject.name = 'nacos'
+
+include ':cloud-alibaba-provider-payment-9501'
+
+include ':cloud-alibaba-consumer-order-80'

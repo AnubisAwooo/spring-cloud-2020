@@ -1,0 +1,14 @@
+dependencies {
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    implementation 'cn.hutool:hutool-all:5.7.12'
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+    implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery:2021.1'
+
+//    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-ribbon:2.2.9.RELEASE'
+    implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer:3.0.3'
+
+}
