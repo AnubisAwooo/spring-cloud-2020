@@ -3,3 +3,5 @@ rootProject.name = 'nacos'
 include ':cloud-alibaba-provider-payment-9501'
 
 include ':cloud-alibaba-consumer-order-80'
+
+include ':cloud-alibaba-config-client-3377'
